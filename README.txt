@@ -26,7 +26,7 @@ Python script
     
         See help for more information and usage: 
     
-        python hplusminus_tests.py -h
+            python hplusminus_tests.py -h
 
         Example for alternative model
         -----------------------------
