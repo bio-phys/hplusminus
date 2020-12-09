@@ -3,7 +3,7 @@ import scipy
 from . import rld
 from . import SID_gamma
 
-def run(args_file_name, args_col):
+def run(args_file_name, args_col=1):
     # Parameters for gamma distribution used to calculate p-values
     gamma_param = SID_gamma.init()
 

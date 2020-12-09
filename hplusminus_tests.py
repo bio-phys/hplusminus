@@ -47,11 +47,12 @@ Juergen Koefinger and Gerhard Hummer (2020) doi.org/XXXXXXXXXXXXXX
 import numpy as np
 import scipy
 import argparse as argp
-from hplusminus import tests
+from hplusminus import program
 
 parser = argp.ArgumentParser(description=__doc__, formatter_class=argp.RawDescriptionHelpFormatter)
 parser.add_argument("file_name", type=str, help="Name of text file containing normalized residuals, reading 1st column per default.")
 parser.add_argument("--col", type=int, default=1, help="Column where to find normalized residuals.")
 args = parser.parse_args()
 
-tests.run(args_file_name=args.file_name, args_col=args.col)
+program.run(args_file_name=args.file_name, args_col=args.col)
+
