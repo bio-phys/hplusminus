@@ -44,7 +44,7 @@ Juergen Koefinger and Gerhard Hummer (2020) doi.org/XXXXXXXXXXXXXX
 import numpy as np
 import scipy
 # hplusminus
-import hplusminus as hpm 
+import hplusminus as hpm
 import argparse as argp
 
 parser = argp.ArgumentParser(description=__doc__, formatter_class=argp.RawDescriptionHelpFormatter)
@@ -53,12 +53,12 @@ parser.add_argument("--col", type=int, default=1, help="Column where to find nor
 args = parser.parse_args()
 
 # Parameters for gamma distribution used to calcualte p-values
-gamma_param=hpm.init()
+gamma_param = hpm.init()
 
 try:
-    normalized_residuals=np.loadtxt(args.file_name)
-    if normalized_residuals.ndim==2:
-        normalized_residuals=normalized_residuals[:,args.col-1]
+    normalized_residuals = np.loadtxt(args.file_name)
+    if normalized_residuals.ndim == 2:
+        normalized_residuals = normalized_residuals[:, args.col - 1]
     print()
     print("Reading normalized residuals from column %d of file \"%s\"." % (args.col, args.file_name))
     print()
@@ -67,48 +67,48 @@ except:
     print("Exiting.")
     exit(-1)
 
-number_data_points=len(normalized_residuals)
+number_data_points = len(normalized_residuals)
 
-signs=np.sign(normalized_residuals)
-chi_square=(normalized_residuals**2).sum()
+signs = np.sign(normalized_residuals)
+chi_square = (normalized_residuals**2).sum()
 
 # Calculate run-length histograms
 num, blockLen, histo, edges = hpm.get_run_length_distributions(signs)
 
 # Dictionary for Shannon information for various tests
-I={}
+I = {}
 # Dictionary for p-values for various tests
-p_value={}
+p_value = {}
 
-# Shannon information of $\chi^2$ 
-I['chi2'] = hpm.SI_chi2(chi_square, number_data_points) 
-# Shannon information of $h$ 
+# Shannon information of $\chi^2$
+I['chi2'] = hpm.SI_chi2(chi_square, number_data_points)
+# Shannon information of $h$
 I['h'] = hpm.SI_h(number_data_points, histo['all'])
-# Shannon information of $h^\pm$ 
+# Shannon information of $h^\pm$
 I['hpm'] = hpm.SI_hpm(number_data_points, num[1], histo['plus'], histo['minus'])
-# Shannon information of $(\chi^2, h)$ 
+# Shannon information of $(\chi^2, h)$
 I['chi2_h'] = I['h'] + I['chi2']
-# Shannon information of $(\chi^2, h^\pm)$ 
+# Shannon information of $(\chi^2, h^\pm)$
 I['chi2_hpm'] = I['hpm'] + I['chi2']
 
 # Calculate p-values for all tests
 for test in I:
-    p_value[test]=hpm.get_p_value(I[test], number_data_points, test, gamma_param)
+    p_value[test] = hpm.get_p_value(I[test], number_data_points, test, gamma_param)
 
-test_names={}
-test_names['chi2']="chi2"
-test_names['h']="h"
-test_names['hpm']="hpm"
-test_names['chi2_h']="(chi2,h)"
-test_names['chi2_hpm']="(chi^2,hpm)"
+test_names = {}
+test_names['chi2'] = "chi2"
+test_names['h'] = "h"
+test_names['hpm'] = "hpm"
+test_names['chi2_h'] = "(chi2,h)"
+test_names['chi2_hpm'] = "(chi^2,hpm)"
 
-print() 
-print( "                                                 p-value ratio    ")
-print( "                                p-value          w.r.t chi2-test  ")
-print( "------------------------------------------------------------------")
-tests=["chi2", "h", "hpm", "chi2_h", "chi2_hpm"]
+print()
+print("                                                 p-value ratio    ")
+print("                                p-value          w.r.t chi2-test  ")
+print("------------------------------------------------------------------")
+tests = ["chi2", "h", "hpm", "chi2_h", "chi2_hpm"]
 
 for test in tests:
-    print("%20s-test:      %3.2e            %2.1e"  % (test_names[test], p_value[test], p_value[test]/p_value['chi2']))
+    print("%20s-test:      %3.2e            %2.1e" % (test_names[test], p_value[test], p_value[test] / p_value['chi2']))
 
-print("------------------------------------------------------------------") 
+print("------------------------------------------------------------------")
