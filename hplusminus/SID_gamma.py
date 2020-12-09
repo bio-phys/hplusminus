@@ -1,8 +1,25 @@
 # Copyright (c) 2020 Juergen Koefinger, Max Planck Institute of Biophysics, Frankfurt am Main, Germany
 # Released under the MIT Licence, see the file LICENSE.txt.
+import os
 import numpy as np
 from scipy.stats import gamma as gamma_dist
 import scipy
+
+
+def _get_package_gsp():
+    """
+    Return the directory path containing gamma spline parameter files that come bundled with the package.
+
+    -------
+    gsp_dir: str
+        directory path containing gamma spline parameter files
+    """
+    package_dir = os.path.dirname(os.path.abspath(__file__))
+    gsp_dir = os.path.join(package_dir, "gsp")
+    if not os.path.exists(gsp_dir):
+        raise RuntimeError("gamma spline parameter directory not found at " + gsp_dir)
+    else:
+        return gsp_dir
 
 
 def load_spline_parameters(ipath, tests=['h', 'both', 'h_simple', 'both_simple']):
@@ -27,7 +44,7 @@ def load_spline_parameters(ipath, tests=['h', 'both', 'h_simple', 'both_simple']
             spline_par[k][na] = {}
             for tmp in ["knots", "coeffs"]:
                 iname = "%s_%s_%s.npy" % (tmp, k, na)
-                spline_par[k][na][tmp] = np.load(ipath + iname)
+                spline_par[k][na][tmp] = np.load(os.path.join(ipath, iname))
     return spline_par
 
 
@@ -105,7 +122,7 @@ def get_gamma_parameters(Ns, test, spline_func):
     return alpha, beta, I0
 
 
-def init(gamma_params_ipath):
+def init(gamma_params_ipath = _get_package_gsp()):
     """
     Initialises spline function object.
 

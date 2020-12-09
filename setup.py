@@ -1,12 +1,30 @@
 import os
+import shutil
 from glob import glob
 from setuptools import setup
+from distutils.command.clean import clean
 
-# not necessary for the actual installation
-#data_files=[("examples", glob(os.path.join("examples", "*"))), ("gamma_spline_parameters", glob(os.path.join("gamma_spline_parameters", "*")))],
+
+package_name = "hplusminus"
+package_base_dir = os.path.dirname(os.path.abspath(__file__))
+gsp_directory_rel = os.path.join(package_name, "gsp")
+gsp_directory_abs = os.path.join(package_base_dir, gsp_directory_rel)
+
+
+class custom_clean(clean):
+    def run(self):
+        # standard clean action
+        super().run()
+        # custom extra clean action
+        for dir in ("build", "dist", "hplusminus.egg-info", "hplusminus/__pycache__"):
+            dir_abs = os.path.join(package_base_dir, dir)
+            if os.path.exists(dir_abs):
+                print("remove " + dir_abs)
+                shutil.rmtree(dir_abs)
+
 
 setup(
-    name="hplusminus",
+    name=package_name,
     version="0.0.1",
     author="Juergen Koefinger",
     description="evaluate test statistics for normalized residuals",
@@ -16,5 +34,8 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.6",
-    packages=["hplusminus", ],
+    packages=[package_name, ],
+    data_files=[(gsp_directory_rel, glob(os.path.join(gsp_directory_abs, "*"))), ],
+    scripts=["hplusminus_tests.py", ],
+    cmdclass={"clean": custom_clean},
 )
