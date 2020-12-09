@@ -41,5 +41,7 @@ setup(
     packages=[package_name, ],
     data_files=[(gsp_directory_rel, glob(os.path.join(gsp_directory_abs, "*"))), ],
     scripts=["hplusminus_tests.py", ],
-    cmdclass={"clean": custom_clean},
+    cmdclass={"clean": custom_clean, },
+    setup_requires=["pytest-runner", ],
+    tests_require=["pytest", ],
 )
