@@ -5,7 +5,15 @@ import scipy
 from scipy.special import binom
 from scipy.special import hyp2f1
 import mpmath
-# from numba import jit, float64, int32, int64
+# Numba-acceleration currently disabled as it does not pay off at the present problem sizes
+# try:
+#     from numba import jit
+# except:
+#     def jit(**kwargs):
+#         def wrap(func):
+#             return func
+#         return wrap
+
 
 mpmath.mp.prec = 100
 
@@ -70,10 +78,8 @@ def log_binomial(N, n):
     lb -= (np.log(np.arange(1, n + 1))).sum()
     return lb
 
-# TODO add fall-back decorator
+
 # @jit(nopython=True)
-
-
 def log_multinomial_kernel(log_N_vec, nvec, len_nvec):
     lm = 0.
     for i in range(len_nvec):
