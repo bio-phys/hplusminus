@@ -1,5 +1,6 @@
 # Copyright (c) 2020 Juergen Koefinger, Max Planck Institute of Biophysics, Frankfurt am Main, Germany
 # Released under the MIT Licence, see the file LICENSE.txt.
+
 import os
 import numpy as np
 from scipy.stats import gamma as gamma_dist

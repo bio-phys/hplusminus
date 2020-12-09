@@ -82,7 +82,7 @@ Python module hplusminus
 
 Examples for normalized residuals generated with *generate_models_for_residuals.ipynb*.
 
-#### *./gamma_spline_parameters/*
+#### *./hplusminus/gsp/*
 
 Numpy binary files containing B-spline parameters (knots and coefficients) for gamma distribution parameters for all tests.
 Information is read from these files. No need for user interaction.

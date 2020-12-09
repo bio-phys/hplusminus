@@ -1,5 +1,6 @@
 # Copyright (c) 2020 Juergen Koefinger, Max Planck Institute of Biophysics, Frankfurt am Main, Germany
 # Released under the MIT Licence, see the file LICENSE.txt.
+
 import numpy as np
 import scipy
 from scipy.special import binom
