@@ -12,9 +12,9 @@ def load_spline_parameters(ipath, tests=['h', 'both', 'h_simple', 'both_simple']
     Parameters
     ----------
     ipath: str
-        Input path. 
+        Input path.
     tests: List of str (optional)
-        Names of tests, for which paramaters are read in. Names identify the corresponding files. 
+        Names of tests, for which paramaters are read in. Names identify the corresponding files.
     Returns
     -------
     spline_par: dict
@@ -38,17 +38,17 @@ def cumulative_SID_gamma(SI, alpha, beta, I0):
     Parameters
     ----------
     SI: float or array-like
-        Shannon information 
-    alpha: float 
-        Shape parameter of the gamma disribution.    
+        Shannon information
+    alpha: float
+        Shape parameter of the gamma disribution.
     beta: float
-        Inverser scale parameter of the gamma disribution.    
-    I0: float 
-        Shift (location) parameter of the gamma distribution. 
+        Inverser scale parameter of the gamma disribution.
+    I0: float
+        Shift (location) parameter of the gamma distribution.
     Returns
     -------
     cdf: float
-        Value of Shannon information 
+        Value of Shannon information
     """
     cdf = 1. - gamma_dist.cdf(SI, alpha, scale=1. / beta, loc=I0)
     return cdf
@@ -63,11 +63,11 @@ def get_spline(spline_par, tests=['h', 'both', 'h_simple', 'both_simple']):
     spline_par: dict
         Dictionary containing knots and coefficients of B-splines for all tests and parameters of the shifted gamma disributions. Ouput of load_spline_parameters().
     tests: List of str (optional)
-        Names of tests. 
+        Names of tests.
     Returns
     -------
     spline_func: dict
-        Dictionary of spline functions. 
+        Dictionary of spline functions.
     """
     nam = ["alpha", "beta", "I0"]
     spline_func = {}
@@ -80,23 +80,23 @@ def get_spline(spline_par, tests=['h', 'both', 'h_simple', 'both_simple']):
 
 def get_gamma_parameters(Ns, test, spline_func):
     """
-    Returns parameters of shifted gamma distributions for given number of data points. 
+    Returns parameters of shifted gamma distributions for given number of data points.
     Parameters
     ----------
     Ns: int
-       Number of data points. 
+       Number of data points.
     test: str
-        Name of test. 
+        Name of test.
     spline_func: dict
         Dictionary of spline functions. Output of get_spline() or init().
     Returns
-    ------- 
+    -------
     alpha: float
-        Shape parameter of the gamma disribution.    
+        Shape parameter of the gamma disribution.
     beta: float
-        Inverser scale parameter of the gamma disribution.    
-    I0: float 
-        Shift (location) parameter of the gamma distribution. 
+        Inverser scale parameter of the gamma disribution.
+    I0: float
+        Shift (location) parameter of the gamma distribution.
     """
     log_Ns = np.log10(Ns)
     alpha = spline_func[test]["alpha"](log_Ns)
@@ -105,13 +105,13 @@ def get_gamma_parameters(Ns, test, spline_func):
     return alpha, beta, I0
 
 
-def init(gamma_params_ipath="./gamma_spline_parameters/"):
+def init(gamma_params_ipath):
     """
     Initialises spline function object.
 
     Parameters
     ----------
-    gamma_params_ipath: str (optional)
+    gamma_params_ipath: str
         Input path.
     Returns
     -------
@@ -131,9 +131,9 @@ def cumulative(SI, number_data_points, test, spline_func):
     Parameters
     ----------
     SI: float
-        Shannon information value. 
+        Shannon information value.
     number_data_points: int
-        Number of data points. 
+        Number of data points.
     test: str
         Name of statistical test.
     spline_func: dict
@@ -176,9 +176,9 @@ def get_p_value(SI, number_data_points, test, spline_func):
     Parameters
     ----------
     SI: float
-        Shannon information value. 
+        Shannon information value.
     number_data_points: int
-        Number of data points. 
+        Number of data points.
     test: str
         Name of statistical test.
     spline_func: dict
