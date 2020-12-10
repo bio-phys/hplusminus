@@ -19,7 +19,7 @@ class custom_clean(clean):
         # standard clean action
         super().run()
         # custom extra clean action
-        for dir in ("build", "dist", "hplusminus.egg-info", "hplusminus/__pycache__"):
+        for dir in ("build", "dist", ".eggs", "hplusminus.egg-info", "hplusminus/__pycache__"):
             dir_abs = os.path.join(package_base_dir, dir)
             if os.path.exists(dir_abs):
                 print("remove " + dir_abs)
@@ -38,7 +38,7 @@ setup(
     ],
     python_requires=">=3.6",
     requires=["numpy", "scipy", "mpmath"],
-    extras_require={"jupyter": ["jupyter", ], "pytest": ["pytest", ],},
+    extras_require={"jupyter": ["jupyter", ], "pytest": ["pytest", ], },
     packages=[package_name, ],
     data_files=[(gsp_directory_rel, glob(os.path.join(gsp_directory_abs, "*"))), ],
     scripts=["hplusminus_tests.py", ],

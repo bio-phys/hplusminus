@@ -1,5 +1,6 @@
 build/
 dist/
+.eggs/
 hplusminus.egg-info
 hplusminus/__pycache__
 ipynb/.ipynb_checkpoints
