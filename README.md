@@ -66,7 +66,7 @@ Generate models for residuals, which can be used with *hplusminus_tests.py*, *hp
 Python 3 module file for the calculation of the Shannon information (neg. log-probabilities) of all test statistics (rld for Run-Length Distribution).
 Required by Python script *hplusminus_tests.py* and Jupyter notebooks *hplusminus_tests.ipynb* and *hplusminus_statistical_power.ipynb*.
 
-### *SID_gamma.py*
+### *sid.py*
 
 Python 3 module file for the calculation of p-values using the gamma distribution approximation
 of the cumulative Shannon information distributions (SID).
