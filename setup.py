@@ -37,7 +37,8 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.6",
-    requires=["numpy", "scipy", "mpmath"], # jupyter is optional
+    requires=["numpy", "scipy", "mpmath"],
+    extras_require={"jupyter": ["jupyter", ], "pytest": ["pytest", ],},
     packages=[package_name, ],
     data_files=[(gsp_directory_rel, glob(os.path.join(gsp_directory_abs, "*"))), ],
     scripts=["hplusminus_tests.py", ],
