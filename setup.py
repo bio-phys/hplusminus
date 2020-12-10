@@ -19,7 +19,7 @@ class custom_clean(clean):
         # standard clean action
         super().run()
         # custom extra clean action
-        for dir in ("build", "dist", ".eggs", "hplusminus.egg-info", "hplusminus/__pycache__"):
+        for dir in ("build", "dist", ".eggs", "hplusminus.egg-info", "hplusminus/__pycache__", "hplusminus/test/__pycache__"):
             dir_abs = os.path.join(package_base_dir, dir)
             if os.path.exists(dir_abs):
                 print("remove " + dir_abs)

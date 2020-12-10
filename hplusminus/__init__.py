@@ -1,4 +1,4 @@
-__all__ = ['rld', 'SID_gamma']
+__all__ = ['rld', 'sid']
 
 from .rld import *
-from .SID_gamma import *
+from .sid import *
