@@ -1,3 +1,6 @@
+# Copyright (c) 2020 Juergen Koefinger, Max Planck Institute of Biophysics, Frankfurt am Main, Germany
+# Released under the MIT Licence, see the file LICENSE.txt.
+
 from collections import OrderedDict
 import numpy as np
 import scipy
