@@ -7,12 +7,32 @@ Released under the MIT Licence, see the file LICENSE.txt.
 ## Requirements
 
 * Python 3
-* Jupyter (for Jupyter noteobooks only)
+* Jupyter (for Jupyter notebooks only)
 * Python modules (can be installed with `pip` or `conda`):
   * numpy
   * scipy
   * mpmath
   * matplotlib (for Jupyter notebooks only)
+
+## Installation
+
+The **hplusminus** package can be installed in the following ways:
+
+### `pip` installation
+
+To install via `pip` please run:
+
+```bash
+pip install --user hplusminus
+```
+
+### Installation from source
+
+After downloading and unpacking the source tarball please run:
+
+```bash
+python setup.py install --user
+```
 
 ## Python script
 
