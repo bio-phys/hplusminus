@@ -29,7 +29,7 @@ class custom_clean(clean):
 setup(
     name=package_name,
     version="0.0.1",
-    author="Juergen Koefinger, Klaus Reuter",
+    author="Juergen Koefinger (MPI for Biophysics), Klaus Reuter (Max Planck Computing and Data Facility)",
     author_email="juergen.koefinger@biophys.mpg.de",
     description="evaluate test statistics for normalized residuals",
     classifiers=[
