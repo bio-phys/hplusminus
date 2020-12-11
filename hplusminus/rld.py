@@ -3,8 +3,6 @@
 
 import numpy as np
 import scipy
-from scipy.special import binom
-from scipy.special import hyp2f1
 import mpmath
 # Numba-acceleration turns out slightly beneficial, however it is completely optional:
 try:
