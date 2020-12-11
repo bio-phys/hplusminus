@@ -188,8 +188,8 @@ def cumulative(SI, number_data_points, test, spline_func):
 
 def get_p_value(SI, number_data_points, test, spline_func):
     """
-    Calculate p-values for given test using gamma disribuiton approximation of Shannon information distribution.
-    Wrapper function for cumulative(SI, number_data_points, test, spline_func)
+    Calculate p-values for given test using the gamma distribution approximation of the Shannon information distribution.
+    Wrapper function for function cumulative(SI, number_data_points, test, spline_func)
 
     Parameters
     ----------
