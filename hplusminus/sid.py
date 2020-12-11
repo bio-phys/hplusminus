@@ -123,7 +123,7 @@ def get_gamma_parameters(Ns, test, spline_func):
     return alpha, beta, I0
 
 
-def init(gamma_params_ipath = _get_package_gsp()):
+def init(gamma_params_ipath=_get_package_gsp()):
     """
     Initialises spline function object.
 

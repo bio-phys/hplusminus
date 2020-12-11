@@ -57,4 +57,3 @@ args = parser.parse_args()
 normalized_residuals = io.read_residuals_from_file(file_name=args.file_name, column=args.col)
 results = tests.evaluate_all(normalized_residuals)
 io.print_pvalues_to_screen(results)
-

@@ -29,7 +29,8 @@ class custom_clean(clean):
 setup(
     name=package_name,
     version="0.0.1",
-    author="Juergen Koefinger",
+    author="Juergen Koefinger, Klaus Reuter",
+    author_email="juergen.koefinger@biophys.mpg.de",
     description="evaluate test statistics for normalized residuals",
     classifiers=[
         "Programming Language :: Python :: 3",

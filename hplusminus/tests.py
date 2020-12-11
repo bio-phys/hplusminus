@@ -11,7 +11,7 @@ from . import sid
 def evaluate_all(normalized_residuals):
     """
     Calculates p-values for the chi2, h, hpm, (chi2, h), and (chi2, hpm) tests.
-    
+
     Parameters
     ----------
     normalized_residuals: array
@@ -36,11 +36,11 @@ def evaluate_all(normalized_residuals):
     # Single dictionary containing all results
     res = OrderedDict()
 
-    res['chi2'] = {"label": "chi2",}
-    res['h'] = {"label": "h",}
-    res['hpm'] = {"label": "hpm",}
-    res['chi2_h'] = {"label": "(chi2,h)",}
-    res['chi2_hpm'] = {"label": "(chi^2,hpm)",}
+    res['chi2'] = {"label": "chi2", }
+    res['h'] = {"label": "h", }
+    res['hpm'] = {"label": "hpm", }
+    res['chi2_h'] = {"label": "(chi2,h)", }
+    res['chi2_hpm'] = {"label": "(chi^2,hpm)", }
 
     # Shannon information of $\chi^2$
     res['chi2']['I'] = rld.SI_chi2(chi_square, number_data_points)

@@ -4,6 +4,7 @@
 
 import numpy as np
 
+
 def read_residuals_from_file(file_name, column=1):
     """
     Read normalized residuals from text file.
