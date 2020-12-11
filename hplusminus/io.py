@@ -1,11 +1,23 @@
 # Copyright (c) 2020 Juergen Koefinger, Max Planck Institute of Biophysics, Frankfurt am Main, Germany
 # Released under the MIT Licence, see the file LICENSE.txt.
 
+
 import numpy as np
 
+def read_residuals_from_file(file_name, column=1):
+    """
+    Read normalized residuals from text file.
 
-def read(file_name, column=1):
-    """Read normalized residuals from text file.
+    Parameters
+    ----------
+    file_name: str
+        Name of text file containing normalized residuals
+    column: int 
+        Number of the column from which normalized residuals are read
+    Returns
+    -------
+    normalized_residuals: array
+        1d array containing normalized residuals
     """
     try:
         normalized_residuals = np.loadtxt(file_name)
@@ -20,15 +32,21 @@ def read(file_name, column=1):
         raise RuntimeError(msg)
 
 
-def print_to_screen(res):
-    """Print output of hpm.calculate() to screen.
+def print_pvalues_to_screen(res):
+    """
+    Print output of hpm.calculate() to screen.
+
+    Parameters
+    ----------
+    res: dict
+        Contains Shannon infomration values, p-values, and test names (labels) for various tests.
     """
     print()
-    print("                                                 p-value ratio    ")
-    print("                                p-value          w.r.t chi2-test  ")
+    print("         statistical                        p-value ratio   ")
+    print("                test      p-value          w.r.t chi2-test  ")
     print("------------------------------------------------------------------")
 
     for test in list(res):
-        print("%20s-test:      %3.2e            %2.1e" % (res[test]['label'], res[test]['p'], res[test]['p'] / res['chi2']['p']))
+        print("%20s      %3.2e            %2.1e" % (res[test]['label'], res[test]['p'], res[test]['p'] / res['chi2']['p']))
 
     print("------------------------------------------------------------------")
