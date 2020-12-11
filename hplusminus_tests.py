@@ -38,7 +38,7 @@ Statistical tests
 
 Reference
 ---------
-Powerful statistical tests for sequential data
+Powerful statistical tests for ordered data
 Juergen Koefinger and Gerhard Hummer (2020) doi.org/XXXXXXXXXXXXXX
 ------------------------------------------------------------------
 
@@ -47,13 +47,14 @@ Juergen Koefinger and Gerhard Hummer (2020) doi.org/XXXXXXXXXXXXXX
 import numpy as np
 import scipy
 import argparse as argp
-from hplusminus import hpm, io
+from hplusminus import tests, io
 
 parser = argp.ArgumentParser(description=__doc__, formatter_class=argp.RawDescriptionHelpFormatter)
 parser.add_argument("file_name", type=str, help="Name of text file containing normalized residuals, reading 1st column per default.")
 parser.add_argument("--col", type=int, default=1, help="Column where to find normalized residuals.")
 args = parser.parse_args()
 
-normalized_residuals = io.read(file_name=args.file_name, column=args.col)
-results = hpm.calculate(normalized_residuals)
-io.print_to_screen(results)
+normalized_residuals = io.read_residuals_from_file(file_name=args.file_name, column=args.col)
+results = tests.evaluate_all(normalized_residuals)
+io.print_pvalues_to_screen(results)
+

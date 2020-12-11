@@ -77,9 +77,17 @@ Calculate statistical power for all tests and given model
 
 ### *generate_models_for_residuals.ipynb*
 
-Generate models for residuals, which can be used with *hplusminus_tests.py*, *hplusminus_tests.ipyn*, *bhplusminus_statistical_power.ipynb*.
+Generate models for residuals, which can be used with the Python script *hplusminus_tests.py* and the Jupyter notebooks *hplusminus_tests.ipyn* and *hplusminus_statistical_power.ipynb*.
 
-## Python module *hplusminus*
+## Python package *hplusminus*
+
+### *tests.py*
+
+Python 3 module file containing functions for the convenient evaluation of the statistical tests.
+
+### *io.py*
+
+Python 3 module file for input and output.
 
 ### *rld.py*
 
@@ -91,6 +99,7 @@ Required by Python script *hplusminus_tests.py* and Jupyter notebooks *hplusminu
 Python 3 module file for the calculation of p-values using the gamma distribution approximation
 of the cumulative Shannon information distributions (SID).
 Required by Python script *hplusminus_tests.py* and Jupyter notebooks *hplusminus_tests.ipynb* and *hplusminus_statistical_power.ipynb*.
+
 
 ### Directories
 
