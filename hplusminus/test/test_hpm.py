@@ -3,7 +3,7 @@
 
 import os
 import pytest
-from .. import io, tests
+from .. import io, evaluate
 
 package_dir = os.path.abspath(os.path.join(os.path.join(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."), "..")))
 examples_dir = os.path.join(package_dir, "examples")
@@ -24,5 +24,5 @@ def test_io_only(case):
 def test_io_calculate_print(case):
     input_file = os.path.join(examples_dir, case)
     normalized_residuals = io.read_residuals_from_file(file_name=input_file, column=1)
-    results = tests.evaluate_all(normalized_residuals)
+    results = evaluate.all_statistical_tests(normalized_residuals)
     io.print_pvalues_to_screen(results)

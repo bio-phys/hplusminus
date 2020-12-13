@@ -8,7 +8,7 @@ from . import rld
 from . import sid
 
 
-def evaluate_all(normalized_residuals):
+def all_statistical_tests(normalized_residuals):
     """
     Calculates p-values for the chi2, h, hpm, (chi2, h), and (chi2, hpm) tests.
 
@@ -20,7 +20,7 @@ def evaluate_all(normalized_residuals):
     Returns
     -------
     res: dict
-        The Shannon information values and p-values for all test statistics. 
+        The Shannon information values and p-values for all test statistics.
     """
     # Parameters for gamma distribution used to calculate p-values
     gamma_param = sid.init()
