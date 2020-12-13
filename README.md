@@ -1,6 +1,8 @@
 # hplusminus
 
-Copyright (c) 2020 Juergen Koefinger, Max Planck Institute of Biophysics, Frankfurt am Main, Germany
+Copyright (C) 2020 Juergen Koefinger, Max Planck Institute of Biophysics, Frankfurt am Main, Germany
+
+With technical contributions from Klaus Reuter, Max Planck Computing and Data Facility, Garching, Germany.
 
 Released under the MIT Licence, see the file LICENSE.txt.
 
