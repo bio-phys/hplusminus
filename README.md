@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/bio-phys/hplusminus.svg?branch=main)](https://travis-ci.com/bio-phys/hplusminus)
+
 # hplusminus
 
 ![](img/overview.png)
