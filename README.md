@@ -1,8 +1,11 @@
-[![Build Status](https://travis-ci.com/bio-phys/hplusminus.svg?branch=main)](https://travis-ci.com/bio-phys/hplusminus)
-
 # hplusminus
 
 ![](img/overview.png)
+
+<p align="center">
+<a href="https://pypi.org/project/hplusminus/"><img alt="PyPI" src="https://img.shields.io/pypi/v/hplusminus"></a>
+<a href="https://travis-ci.com/bio-phys/hplusminus"><img alt="Build Status" src="https://travis-ci.com/bio-phys/hplusminus.svg?branch=main"></a>
+</p>
 
 Copyright (C) 2020 Juergen Koefinger, Max Planck Institute of Biophysics, Frankfurt am Main, Germany
 
