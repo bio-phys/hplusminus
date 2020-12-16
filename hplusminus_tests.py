@@ -36,12 +36,6 @@ Statistical tests
     (chi2,h).......$(\chi^2, h)$..........Combined $\chi^2$ and $h$ test statistic.
     (chi2,hpm).....$(\chi^2, h^\pm)$......Combined $\chi^2$ and $h^\pm$ test statistic.
 
-Reference
----------
-Powerful statistical tests for ordered data
-Juergen Koefinger and Gerhard Hummer (2020) doi.org/XXXXXXXXXXXXXX
-------------------------------------------------------------------
-
 """
 
 import numpy as np
@@ -52,8 +46,11 @@ from hplusminus import evaluate, io
 parser = argp.ArgumentParser(description=__doc__, formatter_class=argp.RawDescriptionHelpFormatter)
 parser.add_argument("file_name", type=str, help="Name of text file containing normalized residuals, reading 1st column per default.")
 parser.add_argument("--col", type=int, default=1, help="Column where to find normalized residuals.")
+parser.add_argument("-o", "--output", type=str, default=None, help="Output filename ending with \".txt\" for text file and \".csv\" for comma-separated value file.")
 args = parser.parse_args()
 
 normalized_residuals = io.read_residuals_from_file(file_name=args.file_name, column=args.col)
 results = evaluate.all_statistical_tests(normalized_residuals)
 io.print_pvalues_to_screen(results)
+if args.output:
+    io.save_to_file(results, args.output)

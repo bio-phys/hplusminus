@@ -35,12 +35,12 @@ def read_residuals_from_file(file_name, column=1):
 
 def print_pvalues_to_screen(res):
     """
-    Print output of hpm.calculate() to screen.
+    Print p-values for various statistical tests to screen. 
 
     Parameters
     ----------
     res: dict
-        Contains Shannon infomration values, p-values, and test names (labels) for various tests.
+        Contains Shannon information values, p-values, and test names (labels) for various tests.
     """
     print()
     print("         statistical                        p-value ratio   ")
@@ -48,6 +48,64 @@ def print_pvalues_to_screen(res):
     print("------------------------------------------------------------------")
 
     for test in list(res):
-        print("%20s      %3.2e            %2.1e" % (res[test]['label'], res[test]['p'], res[test]['p'] / res['chi2']['p']))
+        print("%20s      %3.2e            %2.1e" % (res[test]['label'], res[test]['p-value'], res[test]['p-value'] / res['chi2']['p-value']))
 
-    print("------------------------------------------------------------------")
+
+def save_to_csv(res, filename):
+    """
+    Save Shannon information and  p-values for various statistical tests to csv (comma-separated values) file.  Outfile can be read with pandas (import pandas, df = pandas.read_csv(filename))
+
+    Parameters
+    ----------
+    res: dict
+        Contains Shannon information values, p-values, and test names (labels) for various tests.
+    filename: str
+        Name of output file.
+    """
+    with open(filename, 'w') as fp:
+        fp.write("test,I,p-value\n")
+        for test in list(res):
+            fp.write("%s,%.10le,%.10le\n" % (test, res[test]["I"], res[test]["p-value"]))
+        fp.close()
+
+def save_to_txt(res, filename):
+    """
+    Save Shannon information and p-values for various statistical tests to text file with three columns (name of the test, Shannon information I, p-value) separated by whitespaces.
+
+    Parameters
+    ----------
+    res: dict
+        Contains Shannon information values, p-values, and test names (labels) for various tests.
+    filename: str
+        Name of output file.
+    """
+    with open(filename, 'w') as fp:
+        fp.write("# " + "%8s %8s %18s\n" % ("test", "I", "p-value"))
+        for test in list(res):
+            fp.write("%10s %.10le %.10le\n" % (test, res[test]["I"], res[test]["p-value"]))
+        fp.close()
+
+
+def save_to_file(res, filename):
+    """
+    Save Shannon information and p-values for various statistical tests either to ".txt" or ".csv" file, depending on filename ending. 
+
+    Parameters
+    ----------
+    res: dict
+        Contains Shannon information values, p-values, and test names (labels) for various tests.
+    filename: str
+        Name of output file. Ends either in ".txt" or ".csv".
+    """
+    fmt=filename[-4:]
+    print()
+    if fmt == ".csv":
+        print("Saving to \"%s\"." % filename)
+        save_to_csv(res, filename)
+    elif fmt == ".txt": 
+        print("Saving to \"%s\"." % filename)
+        save_to_txt(res, filename)
+    else:
+        print("No output written. Format \"%s\" not recognized." % fmt)
+        print("Use either \".txt\" or \".csv\".")
+    print()
