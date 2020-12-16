@@ -13,7 +13,7 @@ def read_residuals_from_file(file_name, column=1):
     ----------
     file_name: str
         Name of text file containing normalized residuals
-    column: int 
+    column: int
         Number of the column from which normalized residuals are read
     Returns
     -------
@@ -35,7 +35,7 @@ def read_residuals_from_file(file_name, column=1):
 
 def print_pvalues_to_screen(res):
     """
-    Print p-values for various statistical tests to screen. 
+    Print p-values for various statistical tests to screen.
 
     Parameters
     ----------
@@ -48,7 +48,7 @@ def print_pvalues_to_screen(res):
     print("------------------------------------------------------------------")
 
     for test in list(res):
-        print("%20s      %3.2e            %2.1e" % (res[test]['label'], res[test]['p-value'], res[test]['p-value'] / res['chi2']['p-value']))
+        print("%20s      %3.2e            %2.1e" % (res[test]['label'], res[test]['p'], res[test]['p'] / res['chi2']['p']))
 
 
 def save_to_csv(res, filename):
@@ -65,8 +65,9 @@ def save_to_csv(res, filename):
     with open(filename, 'w') as fp:
         fp.write("test,I,p-value\n")
         for test in list(res):
-            fp.write("%s,%.10le,%.10le\n" % (test, res[test]["I"], res[test]["p-value"]))
+            fp.write("%s,%.10le,%.10le\n" % (test, res[test]["I"], res[test]['p']))
         fp.close()
+
 
 def save_to_txt(res, filename):
     """
@@ -82,13 +83,13 @@ def save_to_txt(res, filename):
     with open(filename, 'w') as fp:
         fp.write("# " + "%8s %8s %18s\n" % ("test", "I", "p-value"))
         for test in list(res):
-            fp.write("%10s %.10le %.10le\n" % (test, res[test]["I"], res[test]["p-value"]))
+            fp.write("%10s %.10le %.10le\n" % (test, res[test]["I"], res[test]['p']))
         fp.close()
 
 
 def save_to_file(res, filename):
     """
-    Save Shannon information and p-values for various statistical tests either to ".txt" or ".csv" file, depending on filename ending. 
+    Save Shannon information and p-values for various statistical tests either to ".txt" or ".csv" file, depending on filename ending.
 
     Parameters
     ----------
@@ -97,12 +98,12 @@ def save_to_file(res, filename):
     filename: str
         Name of output file. Ends either in ".txt" or ".csv".
     """
-    fmt=filename[-4:]
+    fmt = filename[-4:]
     print()
     if fmt == ".csv":
         print("Saving to \"%s\"." % filename)
         save_to_csv(res, filename)
-    elif fmt == ".txt": 
+    elif fmt == ".txt":
         print("Saving to \"%s\"." % filename)
         save_to_txt(res, filename)
     else:

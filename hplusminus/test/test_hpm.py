@@ -15,14 +15,37 @@ test_cases = [
 
 
 @pytest.mark.parametrize("case", test_cases)
-def test_io_only(case):
+def test_io(case):
     input_file = os.path.join(examples_dir, case)
     io.read_residuals_from_file(file_name=input_file, column=1)
 
 
 @pytest.mark.parametrize("case", test_cases)
-def test_io_calculate_print(case):
+def test_evaluate(case):
+    input_file = os.path.join(examples_dir, case)
+    normalized_residuals = io.read_residuals_from_file(file_name=input_file, column=1)
+    evaluate.all_statistical_tests(normalized_residuals)
+
+
+@pytest.mark.parametrize("case", test_cases)
+def test_print_to_screen(case):
     input_file = os.path.join(examples_dir, case)
     normalized_residuals = io.read_residuals_from_file(file_name=input_file, column=1)
     results = evaluate.all_statistical_tests(normalized_residuals)
     io.print_pvalues_to_screen(results)
+
+
+@pytest.mark.parametrize("case", test_cases)
+def test_save_to_txt(case):
+    input_file = os.path.join(examples_dir, case)
+    normalized_residuals = io.read_residuals_from_file(file_name=input_file, column=1)
+    results = evaluate.all_statistical_tests(normalized_residuals)
+    io.save_to_file(results, "out.txt")
+
+
+@pytest.mark.parametrize("case", test_cases)
+def test_save_to_csv(case):
+    input_file = os.path.join(examples_dir, case)
+    normalized_residuals = io.read_residuals_from_file(file_name=input_file, column=1)
+    results = evaluate.all_statistical_tests(normalized_residuals)
+    io.save_to_file(results, "out.csv")
