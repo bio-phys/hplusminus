@@ -9,3 +9,4 @@ install:
 script:
   - python setup.py test
   - python hplusminus_tests.py ./examples/true_model_normalized_residuals.txt
+  - python hplusminus_tests.py ./examples/alternative_model_normalized_residuals.txt
