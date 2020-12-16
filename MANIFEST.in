@@ -1,0 +1,2 @@
+include LICENSE.txt requirements.txt
+include examples/* ipynb/* hplusminus/gsp/* hplusminus/test/*

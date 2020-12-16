@@ -28,9 +28,10 @@ class custom_clean(clean):
 
 setup(
     name=package_name,
-    version="1.0.0",
+    url="https://github.com/bio-phys/hplusminus",
     author="Juergen Koefinger (MPI for Biophysics), Klaus Reuter (Max Planck Computing and Data Facility)",
     author_email="juergen.koefinger@biophys.mpg.de",
+    version="1.0.0",
     description="evaluate test statistics for normalized residuals",
     classifiers=[
         "Programming Language :: Python :: 3",
