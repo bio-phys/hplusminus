@@ -1,5 +1,7 @@
 # hplusminus
 
+![](img/overview.png)
+
 Copyright (C) 2020 Juergen Koefinger, Max Planck Institute of Biophysics, Frankfurt am Main, Germany
 
 With contributions from Klaus Reuter, Max Planck Computing and Data Facility, Garching, Germany.
@@ -11,7 +13,6 @@ Released under the MIT Licence, see the file LICENSE.txt.
 **Powerful statistical tests for ordered data** \
 Juergen Koefinger and Gerhard Hummer \
 Preprint: https://doi.org/10.26434/chemrxiv.13373351 (2020)
-
 
 ## Requirements
 
