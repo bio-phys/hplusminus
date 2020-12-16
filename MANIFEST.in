@@ -1,2 +1,2 @@
 include LICENSE.txt requirements.txt
-include examples/* ipynb/*
+include examples/* ipynb/* img/*
