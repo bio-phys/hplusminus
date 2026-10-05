@@ -3,7 +3,7 @@
 # Copyright (c) 2020 Juergen Koefinger, Max Planck Institute of Biophysics, Frankfurt am Main, Germany
 # Released under the MIT Licence, see the file LICENSE.txt.
 
-"""
+r"""
 Statistical tests for systematic deviations of a model from sequential data
 ===========================================================================
 

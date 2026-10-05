@@ -25,7 +25,7 @@ def _get_package_gsp():
 
 
 def load_spline_parameters(ipath, tests=['h', 'both', 'h_simple', 'both_simple']):
-    """
+    r"""
     Load knots and coefficients for B-splines representing :math:`\alpha`, :math:`\beta`, :math:`\matcal{I}_o` paramters of the shifted gamma disributions as functions of :math:`\log_{10} N`, where :math:`N` is the number of data points.
 
     Parameters

@@ -18,7 +18,7 @@ mpmath.mp.prec = 100
 
 
 def get_run_length_distributions(sc):
-    """
+    r"""
     Given a sequence of signs, we calculate run lengths and run length-histograms. Runs are continous sequences of all signs +1 or all signs -1.
 
     Parameters
@@ -67,7 +67,7 @@ def get_run_length_distributions(sc):
 
 
 def log_binomial(N, n):
-    """
+    r"""
     Returns
     -------
     float
@@ -88,7 +88,7 @@ def log_multinomial_kernel(log_N_vec, nvec, len_nvec):
 
 
 def log_multinomial(N, nvec):
-    """
+    r"""
     Returns
     -------
     float
@@ -206,7 +206,7 @@ def SI_RLD_conditional(histo, Ns):
 
 
 def SI_hpm(N, nPlus, histoPlus, histoMinus, qHisto=True):
-    """
+    r"""
     The total Shannon information (neg. log-probability) of observing run-length histograms :math:`h^\pm=(h^+,`h^-)`. :math:`h^+` and  :math:`h^-` are the run-length histograms for posive and negative runs, repectively
 
     Parameters
@@ -250,7 +250,7 @@ def SI_hpm(N, nPlus, histoPlus, histoMinus, qHisto=True):
 
 
 def SI_h(N, histo, qHisto=True):
-    """
+    r"""
     The Shannon information (neg. log-probability) of observing histograms histo.
 
     Parameters
