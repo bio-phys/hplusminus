@@ -26,6 +26,13 @@ class custom_clean(clean):
                 shutil.rmtree(dir_abs)
 
 
+def get_long_description():
+    """README.md, with relative image links made absolute for display on PyPI."""
+    with open(os.path.join(package_base_dir, "README.md")) as fp:
+        text = fp.read()
+    return text.replace("](img/", "](https://raw.githubusercontent.com/bio-phys/hplusminus/main/img/")
+
+
 setup(
     name=package_name,
     url="https://github.com/bio-phys/hplusminus",
@@ -33,6 +40,8 @@ setup(
     author_email="juergen.koefinger@biophys.mpg.de",
     version="1.0.2",
     description="evaluate test statistics for normalized residuals",
+    long_description=get_long_description(),
+    long_description_content_type="text/markdown",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
