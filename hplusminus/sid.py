@@ -4,7 +4,8 @@
 import os
 import numpy as np
 from scipy.stats import gamma as gamma_dist
-import scipy
+import scipy.interpolate
+import scipy.stats
 
 
 def _get_package_gsp():

@@ -2,7 +2,7 @@
 # Released under the MIT Licence, see the file LICENSE.txt.
 
 import numpy as np
-import scipy
+import scipy.stats
 import mpmath
 # Numba-acceleration turns out slightly beneficial, however it is completely optional:
 try:
@@ -41,7 +41,7 @@ def get_run_length_distributions(sc):
     Ns = sc.shape[0]
     keys = ['all', 'minus', 'plus']
     b = np.where(sc[:-1] != sc[1:])[0]
-    a = np.zeros(b.shape[0] + 2, dtype=np.int)
+    a = np.zeros(b.shape[0] + 2, dtype=np.int64)
     a[0] = -1
     a[-1] = Ns - 1
 
